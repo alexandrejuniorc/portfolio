@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Separator } from "@/components/ui/separator";
 
 const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 
@@ -27,7 +28,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
           disableTransitionOnChange
         >
           <Header />
-          {children}
+          <Separator className="my-4" />
+
+          <main className="mx-auto max-w-5xl flex-col items-center justify-center  px-5 py-8 xl:px-0">
+            {children}
+          </main>
+
           <Footer />
         </ThemeProvider>
       </body>
