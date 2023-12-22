@@ -32,6 +32,12 @@ export const enUS = {
         },
       },
     },
+    footer: {
+      title: "Let's build something together?",
+      description:
+        "If you have something in mind, feel free to send me a message.",
+      button: "Contact me",
+    },
     "mode-toggle": {
       title: "Change Theme",
       light: "Light",

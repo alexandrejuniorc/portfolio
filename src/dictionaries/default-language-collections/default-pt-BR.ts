@@ -32,6 +32,12 @@ export const ptBR = {
         },
       },
     },
+    footer: {
+      title: "Vamos construir algo juntos?",
+      description:
+        "Se você tem algum projeto em mente, sinta-se à vontade para me enviar uma mensagem.",
+      button: "Fale comigo",
+    },
     "mode-toggle": {
       title: "Alterar Tema",
       light: "Modo Claro",

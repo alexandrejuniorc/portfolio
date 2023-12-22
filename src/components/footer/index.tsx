@@ -1,30 +1,45 @@
+"use client";
 import { Github, Instagram, InstagramIcon, Linkedin, Send } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 import { DiscordLogoIcon } from "@radix-ui/react-icons";
+import { useParams } from "next/navigation";
+import { getDictionaryUseClient } from "@/dictionaries/default-dictionary-use-client";
+import { Locale } from "@/config/i18n.config";
 
 export const Footer = () => {
+  const { lang } = useParams();
+  const { dictionary, interpolation } = getDictionaryUseClient(lang as Locale);
+
   return (
     <footer className="mx-auto flex max-w-5xl flex-col justify-start gap-4 overflow-hidden py-8 px-5 lg:px-0">
       <div className="rounded-lg border border-zinc-200 text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-primary-950 dark:text-zinc-50">
         <div className="space-y-1.5 p-6 flex flex-col gap-2">
           <span className="uppercase font-bold text-lg">
-            Vamos construir algo juntos?
+            {interpolation(dictionary.components.footer.title, {
+              name: "Let's build something together?",
+            })}
           </span>
           <p className="text-sm text-zinc-500 dark:text-zinc-400">
             <span>
-              Se você tem algum projeto em mente, sinta-se à vontade para me
-              enviar uma mensagem.
+              {interpolation(dictionary.components.footer.description, {
+                name: "If you have something in mind, feel free to send me a message.",
+              })}
             </span>
           </p>
         </div>
 
         <div className="p-6 pt-0">
           <Link href="/contact">
-            <Button variant={"default"} className="dark:bg-white hover:text-zinc-900 dark:hover:text-zinc-50">
-              <span>Fale comigo</span>
+            <Button
+              variant={"default"}
+              className="dark:bg-white hover:text-zinc-900 dark:hover:text-zinc-50"
+            >
+              <span>{interpolation(dictionary.components.footer.button, {
+                name: "Contact me",
+              })}</span>
               <Send
                 fill="none"
                 strokeWidth={1.5}
