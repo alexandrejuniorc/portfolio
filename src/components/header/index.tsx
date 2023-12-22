@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Code } from "lucide-react";
 import { ModeToggle } from "../mode-toogle";
+import { Lang } from "../nav-test/Lang";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -91,6 +92,7 @@ export function Header() {
         </NavigationMenu>
 
         <ModeToggle />
+        <Lang />
       </div>
     </header>
   );

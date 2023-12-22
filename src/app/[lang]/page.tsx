@@ -1,9 +1,6 @@
 import Link from "next/link";
 
-import Coding from "@/../public/Coding.webp";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Code } from "lucide-react";
+import Coding from "../../../public/Coding.webp";
 import { CardDrop } from "@/components/card-drop";
 export default function Home() {
   return (
