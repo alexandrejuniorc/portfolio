@@ -3,6 +3,13 @@ export const ptBR = {
     name: 'YouTube Piloto',
     description: 'pt-br bbbbbbbbbbbbbbbbbb',
   },
-  'Welcome {{name}}': 'Bem-vindo {{name}}',
-  '{{nascimento}} {{idade}}': '{{nascimento}} {{idade}}',
+  pages: {
+    home: {
+      title: "Olá, eu sou Alexandre Junior - Engenheiro de Software",
+      description: "Unindo design e código, sigo criando projetos únicos.",
+      "section-recent-drops": {
+        title: "Últimos Drops",
+      },
+    },
+  },
 };
