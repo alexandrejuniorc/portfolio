@@ -11,7 +11,7 @@ type CardDropProps = {
 
 export const CardDrop = ({ image, title, description }: CardDropProps) => {
   return (
-    <div className="rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 hover:scale-105 transform transition-all duration-500 ease-in-out hover:bg-[#121212] relative">
+    <div className="rounded-lg border border-zinc-200 bg-white text-zinc-950  shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 hover:scale-105 transform transition-all duration-500 ease-in-out hover:bg-[#121212] hover:text-zinc-50 relative">
       <Image
         src={image}
         alt={"Coding"}
