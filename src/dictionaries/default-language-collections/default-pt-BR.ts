@@ -44,5 +44,8 @@ export const ptBR = {
       dark: "Modo Escuro",
       system: "Sistema",
     },
+    "card-recent-drops": {
+      projects: "Projetos",
+    },
   },
 };

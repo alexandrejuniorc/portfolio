@@ -44,5 +44,8 @@ export const enUS = {
       dark: "Dark",
       system: "System",
     },
+    "card-recent-drops": {
+      projects: "Projects",
+    },
   },
 };

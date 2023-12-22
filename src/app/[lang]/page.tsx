@@ -44,7 +44,12 @@ export default function Home({ params }: { params: { lang: Locale } }) {
           <Link href={"/projects"}>
             <CardDrop
               image={Coding}
-              title={"Projects"}
+              title={interpolation(
+                dictionary.components["card-recent-drops"].projects,
+                {
+                  name: "Projects",
+                }
+              )}
               description={"45 itens"}
             />
           </Link>
