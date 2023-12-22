@@ -12,4 +12,31 @@ export const enUS = {
       },
     },
   },
+  components: {
+    header: {
+      navbar: {
+        about: {
+          title: "About",
+          "about-me": {
+            title: "About Me",
+            description: "Get to know more about me and what I do.",
+          },
+          projects: {
+            title: "Projects",
+            description:
+              "All the projects I've been working on during my career.",
+          },
+        },
+        contact: {
+          title: "Contact",
+        },
+      },
+    },
+    "mode-toggle": {
+      title: "Change Theme",
+      light: "Light",
+      dark: "Dark",
+      system: "System",
+    },
+  },
 };

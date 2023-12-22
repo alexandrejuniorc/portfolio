@@ -5,8 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Separator } from "@/components/ui/separator";
-import { i18n } from "@/config/i18n.config";
-import { Nav } from "@/components/nav-test";
+import { Locale, i18n } from "@/config/i18n.config";
 
 const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 

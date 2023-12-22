@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import Link from "next/link";
 
@@ -16,6 +15,9 @@ import {
 import { Code } from "lucide-react";
 import { ModeToggle } from "../mode-toogle";
 import { Lang } from "../nav-test/Lang";
+import { getDictionaryUseClient } from "@/dictionaries/default-dictionary-use-client";
+import { Locale } from "@/config/i18n.config";
+import { useParams } from "next/navigation";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -30,32 +32,12 @@ const components: { title: string; href: string; description: string }[] = [
     description:
       "For sighted users to preview content available behind a link.",
   },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
 ];
 
 export function Header() {
+  const { lang } = useParams();
+  const { dictionary, interpolation } = getDictionaryUseClient(lang as Locale);
+
   return (
     <header className="mx-auto flex max-w-5xl items-center justify-between gap-20 px-5 py-4 xl:px-0 flex-row-reverse lg:flex-row">
       <Link href="/" className="flex items-center gap-2">
@@ -67,15 +49,46 @@ export function Header() {
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Sobre</NavigationMenuTrigger>
+              <NavigationMenuTrigger>
+                {interpolation(
+                  dictionary.components.header.navbar.about.title,
+                  {
+                    name: "About",
+                  }
+                )}
+              </NavigationMenuTrigger>
+
               <NavigationMenuContent>
-                  <ul className="flex flex-col w-[300px] gap-3 p-4">
-                  <ListItem href="/about" title="Sobre Mim">
-                    Conheça um pouco mais sobre mim e o que eu faço.
+                <ul className="flex flex-col w-[300px] gap-3 p-4">
+                  <ListItem
+                    href="/about"
+                    title={interpolation(
+                      dictionary.components.header.navbar.about["about-me"]
+                        .title,
+                      { name: "About" }
+                    )}
+                  >
+                    {interpolation(
+                      dictionary.components.header.navbar.about["about-me"]
+                        .description,
+                      { name: "Get to know more about me and what I do." }
+                    )}
                   </ListItem>
-                  <ListItem href="/projects" title="Projetos">
-                    Todos os projetos que venho desenvolvendo durante a minha
-                    carreira.
+
+                  <ListItem
+                    href="/projects"
+                    title={interpolation(
+                      dictionary.components.header.navbar.about.projects.title,
+                      { name: "Projects" }
+                    )}
+                  >
+                    {interpolation(
+                      dictionary.components.header.navbar.about.projects
+                        .description,
+                      {
+                        name: "All the projects I've been working on during my career.",
+                      }
+                    )}
                   </ListItem>
                 </ul>
               </NavigationMenuContent>
@@ -84,7 +97,10 @@ export function Header() {
             <NavigationMenuItem>
               <Link href="/contact" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Contato
+                  {interpolation(
+                    dictionary.components.header.navbar.contact.title,
+                    { name: "Contact" }
+                  )}
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
