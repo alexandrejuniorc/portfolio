@@ -13,9 +13,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Code, Braces } from "lucide-react";
+import { Code } from "lucide-react";
 import { ModeToggle } from "../mode-toogle";
-import { Separator } from "@radix-ui/react-dropdown-menu";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -58,10 +57,10 @@ const components: { title: string; href: string; description: string }[] = [
 export function Header() {
   return (
     <header className="mx-auto flex max-w-5xl items-center justify-between gap-20 px-5 py-4 xl:px-0 flex-row-reverse lg:flex-row">
-      <div className="flex items-center gap-2">
+      <Link href="/" className="flex items-center gap-2">
         <Code />
         <h2>alexandrejuniorc</h2>
-      </div>
+      </Link>
 
       <div className="flex justify-between space-x-4">
         <NavigationMenu>
@@ -70,10 +69,10 @@ export function Header() {
               <NavigationMenuTrigger>Sobre</NavigationMenuTrigger>
               <NavigationMenuContent>
                   <ul className="flex flex-col w-[300px] gap-3 p-4">
-                  <ListItem href="/docs" title="Sobre Mim">
+                  <ListItem href="/about" title="Sobre Mim">
                     Conheça um pouco mais sobre mim e o que eu faço.
                   </ListItem>
-                  <ListItem href="/docs/installation" title="Projetos">
+                  <ListItem href="/projects" title="Projetos">
                     Todos os projetos que venho desenvolvendo durante a minha
                     carreira.
                   </ListItem>
@@ -82,7 +81,7 @@ export function Header() {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <Link href="/docs" legacyBehavior passHref>
+              <Link href="/contact" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Contato
                 </NavigationMenuLink>
