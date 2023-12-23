@@ -39,8 +39,9 @@ export function Header() {
   const { dictionary, interpolation } = getDictionaryUseClient(lang as Locale);
 
   return (
-    <header className="mx-auto flex max-w-5xl items-center justify-between gap-20 px-5 py-4 xl:px-0 flex-row-reverse lg:flex-row">
-      <Link href="/" className="flex items-center gap-2">
+    // <header className="mx-auto flex max-w-5xl items-center justify-between gap-20 px-5 py-4 xl:px-0 flex-row-reverse lg:flex-row">
+    <header className="mx-auto items-center px-5 gap-20 py-4 xl:px-0 md:flex md:flex-row md:justify-between max-w-5xl">
+      <Link href="/" className="hidden md:flex items-center gap-2">
         <Code />
         <h2>alexandrejuniorc</h2>
       </Link>
@@ -107,8 +108,10 @@ export function Header() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <ModeToggle />
-        <Lang />
+        <div className="flex gap-4 items-center">
+          <ModeToggle />
+          <Lang />
+        </div>
       </div>
     </header>
   );
