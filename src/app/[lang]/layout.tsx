@@ -1,11 +1,12 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
-import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Separator } from "@/components/ui/separator";
-import { Locale, i18n } from "@/config/i18n.config";
+import { i18n } from "@/config/i18n.config";
+import TanstackProvider from "@/providers/tanstack-provider";
+import ThemesProvider from "@/providers/theme-provider";
 
 const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 
@@ -29,21 +30,18 @@ export default function RootLayout({
   return (
     <html lang={params.lang}>
       <body className={jetBrainsMono.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemesProvider>
           <Header />
           <Separator className="my-4" />
 
-          <main className="mx-auto max-w-5xl flex-col items-center justify-center  px-5 py-8 xl:px-0">
-            {children}
-          </main>
+          <TanstackProvider>
+            <main className="mx-auto max-w-5xl flex-col items-center justify-center  px-5 py-8 xl:px-0">
+              {children}
+            </main>
+          </TanstackProvider>
 
           <Footer />
-        </ThemeProvider>
+        </ThemesProvider>
       </body>
     </html>
   );
