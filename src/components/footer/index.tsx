@@ -33,7 +33,7 @@ export const Footer = () => {
         </div>
 
         <div className="p-6 pt-0">
-          <Link href="/contact">
+          <Link href="mailto:alejunior.dev@gmail.com">
             <Button
               variant={"default"}
               className="dark:bg-white hover:text-zinc-900 dark:hover:text-zinc-50"

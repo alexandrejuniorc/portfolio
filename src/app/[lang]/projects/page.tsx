@@ -15,6 +15,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { getDictionaryUseClient } from "@/dictionaries/default-dictionary-use-client";
 import { Locale } from "@/config/i18n.config";
+import { RepositoryCardSkeleton } from "@/components/skeletons/repository-card-skeleton";
 
 type RepoProps = {
   id: number;
@@ -25,7 +26,12 @@ type RepoProps = {
 }[];
 
 export default function Projects() {
-  const { data } = useQuery<RepoProps>({
+  const [filter, setFilter] = React.useState<RepoProps>([]);
+
+  const { lang } = useParams();
+  const { dictionary, interpolation } = getDictionaryUseClient(lang as Locale);
+
+  const { data, isLoading } = useQuery<RepoProps>({
     queryKey: ["projects"],
     queryFn: () =>
       axios
@@ -34,8 +40,6 @@ export default function Projects() {
         )
         .then((res) => res.data),
   });
-
-  const [filter, setFilter] = React.useState<RepoProps>([]);
 
   const filterProject = (filter: string) => {
     const filterLower = filter.toLowerCase();
@@ -56,9 +60,6 @@ export default function Projects() {
 
     setFilter(filteredData);
   };
-
-  const { lang } = useParams();
-  const { dictionary, interpolation } = getDictionaryUseClient(lang as Locale);
 
   return (
     <>
@@ -95,8 +96,19 @@ export default function Projects() {
       </div>
 
       <div className="grid grid-cols-2 gap-10 items-center px-5 pt-5">
-        {filter?.length > 0 &&
-          filter?.map((project) => {
+        {isLoading &&
+          !data &&
+          filter.length === 0 &&
+          [0, 1, 2, 3].map((index) => (
+            <div className="h-[25rem] max-w-md max-h-full" key={index}>
+              <RepositoryCardSkeleton />
+            </div>
+          ))}
+
+        {!isLoading &&
+          data &&
+          filter.length === 0 &&
+          data?.map((project) => {
             return (
               <TooltipProvider key={project.id}>
                 <Tooltip>
@@ -130,9 +142,9 @@ export default function Projects() {
             );
           })}
 
-        {data &&
-          filter.length === 0 &&
-          data?.map((project) => {
+        {!isLoading &&
+          filter?.length > 0 &&
+          filter?.map((project) => {
             return (
               <TooltipProvider key={project.id}>
                 <Tooltip>
