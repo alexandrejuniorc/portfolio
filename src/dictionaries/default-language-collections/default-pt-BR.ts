@@ -36,13 +36,13 @@ export const ptBR = {
           2: "anos.",
         },
         1: {
-          0: "Sou um programador Front-end com em média",
+          0: "Sou um Engenheiro de Software com em média",
           experience: "2",
           1: "anos de experiência com essas tecnologias:",
-          2: "HTML, CSS, JavaScript, TypeScript, Tailwind CSS, ReactJS, Next.js, Tailwind CSS, Git e GitHub e muito mais.",
+          2: "HTML, CSS, JavaScript, TypeScript, Tailwind CSS, ReactJS, Next.js, Tailwind CSS, Node.js, Java, Git e GitHub e muito mais.",
         },
         2: {
-          0: "Ao longo da minha trajetória como instrutor técnico e programador front-end, adquiri experiência em metodologias ágeis como Scrum e Kanban. Estou disponível para contribuir com minha expertise em JS, TS, React, Next.js e Node.js para a sua equipe.",
+          0: "Ao longo da minha trajetória como desenvolvedor full-stack, adquiri experiência em metodologias ágeis como Scrum e Kanban. Estou disponível para contribuir com minha expertise em JS, TS, React, Next.js, Java e Node.js para a sua equipe.",
         },
       },
     },

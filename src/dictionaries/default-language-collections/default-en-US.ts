@@ -36,13 +36,13 @@ export const enUS = {
           2: "years old.",
         },
         1: {
-          0: "I am a Front-end developer with an average",
+          0: "I am a Software Engineer with an average",
           experience: "2",
           1: "years of experience with these technologies:",
-          2: "HTML, CSS, JavaScript, TypeScript, Tailwind CSS, ReactJS, Next.js, Tailwind CSS, Git and GitHub and more.",
+          2: "HTML, CSS, JavaScript, TypeScript, Tailwind CSS, ReactJS, Next.js, Tailwind CSS, Node.js, Java, Git and GitHub and much more.",
         },
         2: {
-          0: "Throughout my career as a technical instructor and front-end programmer, I have acquired experience in agile methodologies such as Scrum and Kanban. I am available to contribute my expertise in JS, TS, React, Next.js and Node.js to your team."
+          0: "As a full-stack developer, I have experience in agile methodologies such as Scrum and Kanban. I'm available to contribute to my expertise in JS, TS, React, Next.js, Java and Node.js for your team.",
         }
       },
     }

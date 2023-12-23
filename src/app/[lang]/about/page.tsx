@@ -67,7 +67,6 @@ export default function About() {
                 name: "HTML, CSS, JavaScript, TypeScript, Tailwind CSS, ReactJS, Next.js, Tailwind CSS, Git and GitHub and more.",
               })}
             </span>
-            .
           </p>
 
           <p>
