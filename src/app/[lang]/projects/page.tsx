@@ -17,7 +17,7 @@ import { getDictionaryUseClient } from "@/dictionaries/default-dictionary-use-cl
 import { Locale } from "@/config/i18n.config";
 import { RepositoryCardSkeleton } from "@/components/skeletons/repository-card-skeleton";
 
-type RepoProps = {
+export type RepoProps = {
   id: number;
   name: string;
   description: string;

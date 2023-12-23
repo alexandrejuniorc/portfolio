@@ -23,7 +23,7 @@ export const ptBR = {
       "description-1": "Essa página lista os",
       "description-2":
         "principais projetos que venho desenvolvendo durante a minha jornada como programador. Confira outros projetos em meu",
-      "input-search": "Pesquise o projeto desejado",
+      "input-search": "Pesquise o projeto desejado",  
     },
     about: {
       title: "Sobre Mim",
@@ -81,6 +81,7 @@ export const ptBR = {
     },
     "card-recent-drops": {
       projects: "Projetos",
+      items: "Itens",
     },
   },
 };

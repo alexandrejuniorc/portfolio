@@ -81,6 +81,7 @@ export const enUS = {
     },
     "card-recent-drops": {
       projects: "Projects",
+      items: "Items",
     },
   },
 };

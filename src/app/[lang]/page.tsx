@@ -1,16 +1,31 @@
+"use client";
 import Link from "next/link";
 
 import Coding from "../../../public/Coding.webp";
 import { CardDrop } from "@/components/card-drop";
 import { getDictionaryServerOnly } from "@/dictionaries/default-dictionary-server-only";
 import { Locale } from "@/config/i18n.config";
-import { ptBR } from "../../dictionaries/default-language-collections/default-pt-BR";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { RepoProps } from "./projects/page";
+import { getDictionaryUseClient } from "@/dictionaries/default-dictionary-use-client";
+
 export default function Home({ params }: { params: { lang: Locale } }) {
-  const { dictionary, interpolation } = getDictionaryServerOnly(params.lang);
+  const { dictionary, interpolation } = getDictionaryUseClient(params.lang);
+
+  const { data } = useQuery<RepoProps>({
+    queryKey: ["projects"],
+    queryFn: () =>
+      axios
+        .get(
+          `https://api.github.com/users/alexandrejuniorc/repos?sort=created_at&order=asc`
+        )
+        .then((res) => res.data),
+  });
 
   return (
     <>
-      <section className="mx-auto flex max-w-5xl flex-col justify-start gap-4 overflow py-8 xl:px-0">
+      <section>
         <div className="flex flex-col gap-6 md:max-w-3xl">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold md:leading-relaxed">
             {interpolation(dictionary.pages.home.title, {
@@ -50,7 +65,21 @@ export default function Home({ params }: { params: { lang: Locale } }) {
                   name: "Projects",
                 }
               )}
-              description={"45 itens"}
+              description={
+                data
+                  ? `${data.length.toString()} ${interpolation(
+                      dictionary.components["card-recent-drops"].items,
+                      {
+                        name: "Items",
+                      }
+                    )}`
+                  : `0 ${interpolation(
+                      dictionary.components["card-recent-drops"].items,
+                      {
+                        name: "Items",
+                      }
+                    )}`
+              }
             />
           </Link>
         </div>
