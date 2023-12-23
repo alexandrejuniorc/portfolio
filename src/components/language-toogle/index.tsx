@@ -1,9 +1,8 @@
 "use client";
-
 import { useParams, usePathname } from "next/navigation";
 
 import Link from "next/link";
-import { FlagKey, flag, locales } from "./locales";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,8 +10,9 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
+import { flag, FlagKey, locales } from "@/utils/locales";
 
-export const Lang = () => {
+export const LanguageToogle = () => {
   const { lang } = useParams();
   const pathname = usePathname();
 

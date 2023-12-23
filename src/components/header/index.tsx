@@ -14,33 +14,45 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Code } from "lucide-react";
 import { ModeToggle } from "../mode-toogle";
-import { Lang } from "../nav-test/Lang";
 import { getDictionaryUseClient } from "@/dictionaries/default-dictionary-use-client";
 import { Locale } from "@/config/i18n.config";
 import { useParams } from "next/navigation";
-
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-];
+import { LanguageToogle } from "../language-toogle";
+import { interpolation } from "@/dictionaries/interpolation";
 
 export function Header() {
   const { lang } = useParams();
   const { dictionary, interpolation } = getDictionaryUseClient(lang as Locale);
 
+  const aboutRoutes: { title: string; href: string; description: string }[] = [
+    {
+      title: interpolation(
+        dictionary.components.header.navbar.about["about-me"].title,
+        { name: "About" }
+      ),
+      href: "/about",
+      description: interpolation(
+        dictionary.components.header.navbar.about["about-me"].description,
+        { name: "Get to know more about me and what I do." }
+      ),
+    },
+    {
+      title: interpolation(
+        dictionary.components.header.navbar.about.projects.title,
+        { name: "Projects" }
+      ),
+      href: "/projects",
+      description: interpolation(
+        dictionary.components.header.navbar.about.projects.description,
+        {
+          name: "All the projects I've been working on during my career.",
+        }
+      ),
+    },
+  ];
+
   return (
     <header className="mx-auto flex max-w-5xl items-center justify-between md:gap-20 px-5 py-4 xl:px-0">
-      {/* // <header className="mx-auto items-center px-5 gap-20 py-4 xl:px-0 flex lg:flex-row justify-between max-w-5xl"> */}
       <Link href="/" className="flex items-center gap-2">
         <Code />
         <h2 className="hidden md:flex">alejunior.dev</h2>
@@ -61,36 +73,15 @@ export function Header() {
 
               <NavigationMenuContent>
                 <ul className="flex flex-col w-[300px] gap-3 p-4">
-                  <ListItem
-                    href="/about"
-                    title={interpolation(
-                      dictionary.components.header.navbar.about["about-me"]
-                        .title,
-                      { name: "About" }
-                    )}
-                  >
-                    {interpolation(
-                      dictionary.components.header.navbar.about["about-me"]
-                        .description,
-                      { name: "Get to know more about me and what I do." }
-                    )}
-                  </ListItem>
-
-                  <ListItem
-                    href="/projects"
-                    title={interpolation(
-                      dictionary.components.header.navbar.about.projects.title,
-                      { name: "Projects" }
-                    )}
-                  >
-                    {interpolation(
-                      dictionary.components.header.navbar.about.projects
-                        .description,
-                      {
-                        name: "All the projects I've been working on during my career.",
-                      }
-                    )}
-                  </ListItem>
+                  {aboutRoutes.map((item) => (
+                    <ListItem
+                      key={item.title}
+                      href={item.href}
+                      title={item.title}
+                    >
+                      {item.description}
+                    </ListItem>
+                  ))}
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
@@ -110,7 +101,7 @@ export function Header() {
 
         <div className="flex gap-4 items-center">
           <ModeToggle />
-          <Lang />
+          <LanguageToogle />
         </div>
       </div>
     </header>
