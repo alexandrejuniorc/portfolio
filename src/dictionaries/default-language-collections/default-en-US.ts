@@ -25,6 +25,27 @@ export const enUS = {
         "the most popular projects I've been working on during my career. Check out other projects on my",
       "input-search": "Search for a project",
     },
+    about: {
+      title: "About Me",
+      description: {
+        0: {
+          0: "My name is Alexandre, known as",
+          surname: "Juninho",
+          1: "and I have",
+          age: "22",
+          2: "years old.",
+        },
+        1: {
+          0: "I am a Front-end developer with an average",
+          experience: "2",
+          1: "years of experience with these technologies:",
+          2: "HTML, CSS, JavaScript, TypeScript, Tailwind CSS, ReactJS, Next.js, Tailwind CSS, Git and GitHub and more.",
+        },
+        2: {
+          0: "Throughout my career as a technical instructor and front-end programmer, I have acquired experience in agile methodologies such as Scrum and Kanban. I am available to contribute my expertise in JS, TS, React, Next.js and Node.js to your team."
+        }
+      },
+    }
   },
   components: {
     header: {

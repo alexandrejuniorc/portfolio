@@ -35,7 +35,7 @@ export default function RootLayout({
           <Separator className="my-4" />
 
           <TanstackProvider>
-            <main className="mx-auto max-w-5xl flex-col items-center justify-center  px-5 py-8 xl:px-0">
+            <main className="mx-auto flex flex-col max-w-5xl justify-between gap-10 overflow-hidden px-5 py-8 xl:px-0">
               {children}
             </main>
           </TanstackProvider>

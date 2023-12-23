@@ -25,6 +25,27 @@ export const ptBR = {
         "principais projetos que venho desenvolvendo durante a minha jornada como programador. Confira outros projetos em meu",
       "input-search": "Pesquise o projeto desejado",
     },
+    about: {
+      title: "Sobre Mim",
+      description: {
+        0: {
+          0: "Meu nome é Alexandre, mais conhecido como",
+          surname: "Juninho",
+          1: "e tenho",
+          age: "22",
+          2: "anos.",
+        },
+        1: {
+          0: "Sou um programador Front-end com em média",
+          experience: "2",
+          1: "anos de experiência com essas tecnologias:",
+          2: "HTML, CSS, JavaScript, TypeScript, Tailwind CSS, ReactJS, Next.js, Tailwind CSS, Git e GitHub e muito mais.",
+        },
+        2: {
+          0: "Ao longo da minha trajetória como instrutor técnico e programador front-end, adquiri experiência em metodologias ágeis como Scrum e Kanban. Estou disponível para contribuir com minha expertise em JS, TS, React, Next.js e Node.js para a sua equipe.",
+        },
+      },
+    },
   },
   components: {
     header: {

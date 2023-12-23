@@ -25,13 +25,12 @@ type RepoProps = {
 }[];
 
 export default function Projects() {
-  const githubUser = "alexandrejuniorc";
   const { data } = useQuery<RepoProps>({
     queryKey: ["projects"],
     queryFn: () =>
       axios
         .get(
-          `https://api.github.com/users/${githubUser}/repos?sort=created_at&order=asc`
+          `https://api.github.com/users/alexandrejuniorc/repos?sort=created_at&order=asc`
         )
         .then((res) => res.data),
   });
@@ -64,7 +63,9 @@ export default function Projects() {
   return (
     <>
       <div className="flex flex-col gap-5 w-full px-1">
-        <h1 className="flex font-bold items-start text-4xl">{interpolation(dictionary.pages.projects.title, { name: "Projects" })}</h1>
+        <h1 className="flex font-bold items-start text-4xl">
+          {interpolation(dictionary.pages.projects.title, { name: "Projects" })}
+        </h1>
 
         <p className="text-base text-[#888]">
           {interpolation(dictionary.pages.projects["description-1"], {
