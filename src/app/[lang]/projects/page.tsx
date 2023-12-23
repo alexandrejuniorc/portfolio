@@ -27,7 +27,9 @@ export default function Projects() {
     queryKey: ["projects"],
     queryFn: () =>
       axios
-        .get(`https://api.github.com/users/${githubUser}/repos`)
+        .get(
+          `https://api.github.com/users/${githubUser}/repos?sort=created_at&order=asc`
+        )
         .then((res) => res.data),
   });
 
@@ -49,8 +51,13 @@ export default function Projects() {
           Essa página lista os{" "}
           <span className="text-white">{data?.length}</span> principais projetos
           que venho desenvolvendo durante a minha jornada como programador.
-          Confira outros projetos{" "}
-          <Link href="https://github.com/alexandrejuniorc">em meu Github</Link>
+          Confira outros projetos em meu{" "}
+          <Link
+            href="https://github.com/alexandrejuniorc"
+            className="underline"
+          >
+            Github
+          </Link>
         </p>
 
         <Input
