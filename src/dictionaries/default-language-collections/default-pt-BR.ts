@@ -11,6 +11,17 @@ export const ptBR = {
         title: "Últimos Drops",
       },
     },
+    contact: {
+      title: "Ola, eu sou Alexandre Junior!",
+      description:
+        "Construindo projetos de alta performance e experiências digitais incríveis que ajudam a aumentar a presença da sua marca online e a melhorar a experiência do usuário.",
+      cards: {
+        whatsApp: "WhatsApp",
+        email: "E-mail",
+        twitter: "Twitter",
+        facebook: "Facebook",
+      },
+    },
   },
   components: {
     header: {

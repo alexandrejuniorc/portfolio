@@ -11,6 +11,17 @@ export const enUS = {
         title: "Recent Drops",
       },
     },
+    contact: {
+      title: "Hello, I'm Alexandre Junior!",
+      description:
+        "Building high performance and digital experiences that help increase your online presence and improve user experience.",
+      cards: {
+        whatsApp: "WhatsApp",
+        email: "E-mail",
+        twitter: "Twitter",
+        facebook: "Facebook",
+      },
+    },
   },
   components: {
     header: {
