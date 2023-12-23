@@ -1,8 +1,4 @@
 export const enUS = {
-  site: {
-    name: "YouTube Piloto",
-    description: "en-us aaaaaaaaaaaaaaaaaa",
-  },
   pages: {
     home: {
       title: "Hey, I'm Alexandre Junior - Software Engineer",
@@ -21,6 +17,13 @@ export const enUS = {
         twitter: "Twitter",
         facebook: "Facebook",
       },
+    },
+    projects: {
+      title: "Projects",
+      "description-1": "This page lists",
+      "description-2":
+        "the most popular projects I've been working on during my career. Check out other projects on my",
+      "input-search": "Search for a project",
     },
   },
   components: {

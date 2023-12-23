@@ -1,8 +1,4 @@
 export const ptBR = {
-  site: {
-    name: "YouTube Piloto",
-    description: "pt-br bbbbbbbbbbbbbbbbbb",
-  },
   pages: {
     home: {
       title: "Olá, eu sou Alexandre Junior - Engenheiro de Software",
@@ -21,6 +17,13 @@ export const ptBR = {
         twitter: "Twitter",
         facebook: "Facebook",
       },
+    },
+    projects: {
+      title: "Projetos",
+      "description-1": "Essa página lista os",
+      "description-2":
+        "principais projetos que venho desenvolvendo durante a minha jornada como programador. Confira outros projetos em meu",
+      "input-search": "Pesquise o projeto desejado",
     },
   },
   components: {

@@ -12,6 +12,9 @@ import {
 } from "@/components/ui/tooltip";
 import CardProject from "@/../public/card-project.avif";
 import Image from "next/image";
+import { useParams } from "next/navigation";
+import { getDictionaryUseClient } from "@/dictionaries/default-dictionary-use-client";
+import { Locale } from "@/config/i18n.config";
 
 type RepoProps = {
   id: number;
@@ -55,25 +58,37 @@ export default function Projects() {
     setFilter(filteredData);
   };
 
+  const { lang } = useParams();
+  const { dictionary, interpolation } = getDictionaryUseClient(lang as Locale);
+
   return (
     <>
       <div className="flex flex-col gap-5 w-full px-1">
-        <h1 className="flex font-bold items-start text-4xl">Projetos</h1>
+        <h1 className="flex font-bold items-start text-4xl">{interpolation(dictionary.pages.projects.title, { name: "Projects" })}</h1>
+
         <p className="text-base text-[#888]">
-          Essa página lista os{" "}
-          <span className="text-white">{data?.length}</span> principais projetos
-          que venho desenvolvendo durante a minha jornada como programador.
-          Confira outros projetos em meu{" "}
+          {interpolation(dictionary.pages.projects["description-1"], {
+            name: "This page lists",
+          })}{" "}
+          <span className="text-primary dark:text-white">{data?.length}</span>{" "}
+          {interpolation(dictionary.pages.projects["description-2"], {
+            name: "the most popular projects I've been working on during my career. Check out other projects on my",
+          })}{" "}
           <Link
             href="https://github.com/alexandrejuniorc"
-            className="underline"
+            className="underline text-primary dark:text-white"
           >
             Github
           </Link>
         </p>
 
         <Input
-          placeholder="Pesquise o projeto desejado"
+          placeholder={interpolation(
+            dictionary.pages.projects["input-search"],
+            {
+              name: "Search for a project",
+            }
+          )}
           onChange={(e) => filterProject(e.target.value)}
         />
       </div>
