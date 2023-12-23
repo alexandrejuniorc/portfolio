@@ -40,10 +40,10 @@ export function Header() {
 
   return (
     // <header className="mx-auto flex max-w-5xl items-center justify-between gap-20 px-5 py-4 xl:px-0 flex-row-reverse lg:flex-row">
-    <header className="mx-auto items-center px-5 gap-20 py-4 xl:px-0 md:flex md:flex-row md:justify-between max-w-5xl">
-      <Link href="/" className="hidden md:flex items-center gap-2">
+    <header className="mx-auto items-center px-5 gap-20 py-4 xl:px-0 flex lg:flex-row justify-between max-w-5xl">
+      <Link href="/" className="flex items-center gap-2">
         <Code />
-        <h2>alexandrejuniorc</h2>
+        <h2 className="hidden md:flex">alejunior.dev</h2>
       </Link>
 
       <div className="flex justify-between space-x-4">
