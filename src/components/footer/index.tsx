@@ -8,6 +8,7 @@ import { DiscordLogoIcon } from "@radix-ui/react-icons";
 import { useParams } from "next/navigation";
 import { getDictionaryUseClient } from "@/dictionaries/default-dictionary-use-client";
 import { Locale } from "@/config/i18n.config";
+import { ButtonIconFooter } from "../button-icon-footer";
 
 export const Footer = () => {
   const { lang } = useParams();
@@ -37,9 +38,11 @@ export const Footer = () => {
               variant={"default"}
               className="dark:bg-white hover:text-zinc-900 dark:hover:text-zinc-50"
             >
-              <span>{interpolation(dictionary.components.footer.button, {
-                name: "Contact me",
-              })}</span>
+              <span>
+                {interpolation(dictionary.components.footer.button, {
+                  name: "Contact me",
+                })}
+              </span>
               <Send
                 fill="none"
                 strokeWidth={1.5}
@@ -56,57 +59,38 @@ export const Footer = () => {
 
         <div className="items-center m-0 flex justify-center p-5">
           <div className="flex justify-between items-center gap-3 md:gap-2">
-            <Button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 border border-zinc-200 hover:bg-primary/90 hover:text-zinc-900 dark:border-zinc-800 dark:bg-white dark:hover:bg-primary dark:hover:text-zinc-50 h-10 w-10">
-              <Link href="https://www.instagram.com/alexandrejuniorc/">
-                <Instagram
-                  fill="none"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  width={24}
-                  height={24}
-                />
-              </Link>
-            </Button>
+            <ButtonIconFooter url="https://www.instagram.com/alexandrejuniorc/">
+              <Instagram
+                fill="none"
+                strokeWidth={1.5}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                width={24}
+                height={24}
+              />
+            </ButtonIconFooter>
 
-            <Button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 border border-zinc-200 hover:bg-primary/90 hover:text-zinc-900 dark:border-zinc-800 dark:bg-white dark:hover:bg-primary dark:hover:text-zinc-50 h-10 w-10">
-              <Link href="https://github.com/alexandrejuniorc">
-                <Github
-                  fill="none"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  width={24}
-                  height={24}
-                />
-              </Link>
-            </Button>
+            <ButtonIconFooter url="https://github.com/alexandrejuniorc">
+              <Github
+                fill="none"
+                strokeWidth={1.5}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                width={24}
+                height={24}
+              />
+            </ButtonIconFooter>
 
-            <Button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 border border-zinc-200 hover:bg-primary/90 hover:text-zinc-900 dark:border-zinc-800 dark:bg-white dark:hover:bg-primary dark:hover:text-zinc-50 h-10 w-10">
-              <Link href="https://www.linkedin.com/in/alexandrejuniorc/">
-                <Linkedin
-                  fill="none"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  width={24}
-                  height={24}
-                />
-              </Link>
-            </Button>
-
-            <Button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 border border-zinc-200 hover:bg-primary/90 hover:text-zinc-900 dark:border-zinc-800 dark:bg-white dark:hover:bg-primary dark:hover:text-zinc-50 h-10 w-10">
-              <Link href="https://github.com/alexandrejuniorc">
-                <DiscordLogoIcon
-                  fill="none"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  width={24}
-                  height={24}
-                />
-              </Link>
-            </Button>
+            <ButtonIconFooter url="https://www.linkedin.com/in/alexandrejuniorc/">
+              <Linkedin
+                fill="none"
+                strokeWidth={1.5}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                width={24}
+                height={24}
+              />
+            </ButtonIconFooter>
           </div>
         </div>
       </div>
