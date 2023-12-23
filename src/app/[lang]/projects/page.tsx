@@ -36,8 +36,20 @@ export default function Projects() {
   const [filter, setFilter] = React.useState<RepoProps>([]);
 
   const filterProject = (filter: string) => {
-    const filteredData = data!.filter((project) =>
-      project.name.includes(filter)
+    const filterLower = filter.toLowerCase();
+
+    const payload = data?.map((project) => {
+      return {
+        id: project.id,
+        name: project.name.toLowerCase(),
+        description: project.description,
+        language: project.language,
+        html_url: project.html_url,
+      };
+    });
+
+    const filteredData = payload!.filter((project) =>
+      project.name.includes(filterLower)
     );
 
     setFilter(filteredData);
