@@ -25,7 +25,7 @@ export function Stack() {
             content: (
               <>
                 <h3 className="t-heading">{side.title()}</h3>
-                <ul className="arrow-bullets mt-6 columns-2 gap-x-8">
+                <ul className="arrow-bullets mt-6 columns-2 gap-x-8" translate="no">
                   {side.items.map((name) => (
                     <li key={name} className="mb-1 break-inside-avoid">
                       {name}

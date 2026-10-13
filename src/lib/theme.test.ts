@@ -88,6 +88,22 @@ describe('THEME_INIT_SCRIPT', () => {
     expect(document.documentElement.dataset.theme).toBe('dark')
   })
 
+  test('paints the browser chrome in the colour of the theme', () => {
+    const meta = document.createElement('meta')
+    meta.setAttribute('name', 'theme-color')
+    meta.setAttribute('content', '#07090d')
+    document.head.append(meta)
+
+    localStorage.setItem(THEME_STORAGE_KEY, stored('light'))
+    runInitScript()
+    expect(meta.getAttribute('content')).toBe('#f6f7f9')
+
+    localStorage.clear()
+    runInitScript()
+    expect(meta.getAttribute('content')).toBe('#07090d')
+    meta.remove()
+  })
+
   test('still opens dark when localStorage throws', () => {
     vi.stubGlobal('localStorage', {
       getItem() {

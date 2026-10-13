@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, test } from 'vitest'
 import { contrastRatio } from '@/lib/contrast'
+import { THEME_COLOR } from '@/lib/theme'
 
 const css = readFileSync(join(process.cwd(), 'src/styles/app.css'), 'utf8')
 
@@ -68,6 +69,21 @@ describe('build and motion safety', () => {
   test('scroll reveal hides content only after the script has taken over', () => {
     expect(css).toContain('.reveal-on [data-reveal]')
     expect(css).not.toMatch(/(^|[},])\s*\[data-reveal\][^{]*\{[^}]*opacity:\s*0/)
+  })
+
+  test('transitions only ever animate transform and opacity', () => {
+    const animated = [...css.matchAll(/transition:\s*([^;]+);/g)].flatMap((match) =>
+      match[1]
+        .replace(/\([^)]*\)/g, '')
+        .split(',')
+        .map((part) => part.trim().split(/\s+/)[0]),
+    )
+    expect([...new Set(animated)].sort()).toEqual(['opacity', 'transform'])
+  })
+
+  test('the browser chrome colour of each theme is the page ground of that theme', () => {
+    expect(THEME_COLOR.dark).toBe(themes.dark.bg)
+    expect(THEME_COLOR.light).toBe(themes.light.bg)
   })
 
   test('every animation and transition sits behind prefers-reduced-motion', () => {

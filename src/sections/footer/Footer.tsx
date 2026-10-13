@@ -7,7 +7,9 @@ import { m } from '@/paraglide/messages'
 export function Footer() {
   return (
     <footer className="wrap py-16">
-      <p className="t-display">{SITE.name}</p>
+      <p className="t-display" translate="no">
+        {SITE.name}
+      </p>
       <div className="mt-10 flex flex-wrap items-center justify-between gap-x-8 gap-y-4">
         <p className="text-muted">{m.footer_built_with()}</p>
         <div className="flex flex-wrap items-center gap-x-4">

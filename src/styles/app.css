@@ -61,6 +61,7 @@
     font-family: var(--font-text);
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: color-mix(in srgb, var(--accent) 35%, transparent);
   }
 
   body {
@@ -68,6 +69,17 @@
     overflow-x: clip;
     font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
     line-height: 1.5;
+  }
+
+  /* No double-tap zoom delay on anything a finger can press. */
+  a,
+  button,
+  summary {
+    touch-action: manipulation;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   ::selection {
@@ -90,6 +102,7 @@
 
 /* Type: five sizes for the whole site. Body text is the fifth and needs no class. */
 @utility t-display {
+  text-wrap: balance;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(1.75rem, 7.2vw, 6.25rem);
@@ -98,6 +111,7 @@
 }
 
 @utility t-heading {
+  text-wrap: balance;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(1.875rem, 4.2vw, 3.5rem);
@@ -246,6 +260,11 @@
     --step-ink: var(--accent-ink);
   }
 
+  /* A case diagram is the picture of the case: its steps are tall enough to read as one. */
+  .flow-case .flow-step {
+    min-height: 6.5rem;
+  }
+
   .flow-hero {
     --tip: 1.5rem;
     --gap: 0.5rem;
@@ -339,6 +358,15 @@
       padding-left: clamp(1.25rem, 2.2vw, 2rem);
     }
 
+    .flow-case {
+      --tip: 2rem;
+    }
+
+    .flow-case .flow-step {
+      min-height: 8.5rem;
+      padding-block: 1.75rem;
+    }
+
     .flow-stack {
       --tip: clamp(2rem, 4vw, 3.5rem);
     }
@@ -351,7 +379,8 @@
   .hero {
     display: flex;
     flex-direction: column;
-    min-height: 100svh;
+    /* A first screen, but never a hole on a very tall display. */
+    min-height: min(100svh, 62.5rem);
     padding-top: clamp(6.5rem, 16vh, 10rem);
     /* The last arrow runs past the right edge on purpose; it must not widen the page. */
     overflow-x: clip;
@@ -538,11 +567,8 @@
     transition-delay: 420ms;
   }
 
-  .arrow-button,
-  .link {
-    transition:
-      transform 160ms ease,
-      text-decoration-thickness 160ms ease;
+  .arrow-button {
+    transition: transform 160ms ease;
   }
 
   .arrow-button:hover {

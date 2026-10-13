@@ -20,7 +20,7 @@ export function Clients() {
           <tbody>
             {clients.map((client) => (
               <tr key={client.id}>
-                <th scope="row" className="t-lead font-display font-bold md:w-1/4">
+                <th scope="row" className="t-lead font-display font-bold md:w-1/4" translate="no">
                   {client.name}
                 </th>
                 <td>{client.work()}</td>

@@ -19,7 +19,7 @@ export function Proof() {
               style={order(index + 1)}
             >
               <span className="t-heading">{proof.title()}</span>
-              <span className="text-muted">
+              <span className="text-muted tabular-nums">
                 {proof.issuer}, {proof.year}
                 {proof.href ? (
                   <>

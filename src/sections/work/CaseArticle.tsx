@@ -19,7 +19,8 @@ export function CaseArticle({ item }: { item: CaseStudy }) {
       <div className="mt-8 grid gap-x-8 gap-y-6 lg:grid-cols-12" data-reveal style={order(1)}>
         <p className="t-lead lg:col-span-7">{item.intro()}</p>
         <p className="lg:col-span-4 lg:col-start-9">
-          <span className="text-muted">{m.work_built_with()}</span> {item.stack.join(', ')}
+          <span className="text-muted">{m.work_built_with()}</span>{' '}
+          <span translate="no">{item.stack.join(', ')}</span>
         </p>
       </div>
 
@@ -28,7 +29,9 @@ export function CaseArticle({ item }: { item: CaseStudy }) {
         {item.parts.map((part, index) => (
           <div key={part.id} data-reveal style={order(index + 2)}>
             {part.heading ? (
-              <h4 className="t-lead font-display font-bold">{part.heading}</h4>
+              <h4 className="t-lead font-display font-bold" translate="no">
+                {part.heading}
+              </h4>
             ) : null}
             <p className={part.heading ? 'mt-2 max-w-[60ch]' : 'max-w-[60ch]'}>{part.text()}</p>
             <Flow
@@ -37,8 +40,12 @@ export function CaseArticle({ item }: { item: CaseStudy }) {
                 key: `${part.id}-${position}`,
                 content: (
                   <>
-                    <span className="flow-label">{step.label()}</span>
-                    {step.tech ? <span className="flow-tech t-small">{step.tech}</span> : null}
+                    <span className="flow-label t-lead">{step.label()}</span>
+                    {step.tech ? (
+                      <span className="flow-tech t-small" translate="no">
+                        {step.tech}
+                      </span>
+                    ) : null}
                   </>
                 ),
               }))}

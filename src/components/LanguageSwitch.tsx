@@ -16,10 +16,11 @@ export function LanguageSwitch() {
               href={localePath(locale)}
               hrefLang={LOCALE_TAG[locale]}
               lang={LOCALE_TAG[locale]}
-              aria-label={NATIVE_NAME[locale]}
               aria-current={locale === current ? 'true' : undefined}
             >
+              {/* The full name is read out; the code stays part of the accessible name for voice control. */}
               {locale.toUpperCase()}
+              <span className="sr-only"> {NATIVE_NAME[locale]}</span>
             </a>
           </li>
         ))}

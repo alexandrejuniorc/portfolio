@@ -60,7 +60,7 @@ describe('Work', () => {
     const html = renderIn('en', <Work />)
     expect(count(html, 'class="flow flow-case"')).toBe(6)
     for (const client of ['Gerdau', 'RHI Magnesita', 'Bunge']) {
-      expect(html).toContain(`<h4 class="t-lead font-display font-bold">${client}</h4>`)
+      expect(html).toContain(`>${client}</h4>`)
     }
   })
 
@@ -68,6 +68,15 @@ describe('Work', () => {
     const html = renderIn('en', <Work />)
     expect(html).toContain('Next.js, NestJS, AWS ECS, AWS Lambda, DynamoDB, S3, VTEX')
     expect(html).toContain('Python, React, Node.js, CI/CD, UI5, SAP API Management')
+  })
+
+  test('keeps product and client names out of automatic page translation', () => {
+    const html = renderIn('en', <Work />)
+    expect(count(html, 'class="flow-tech t-small" translate="no"')).toBe(19)
+    expect(html).toContain('<h4 class="t-lead font-display font-bold" translate="no">Gerdau</h4>')
+    expect(html).toContain(
+      '<span translate="no">Next.js, NestJS, AWS ECS, AWS Lambda, DynamoDB, S3, VTEX</span>',
+    )
   })
 
   test('is translated', () => {
@@ -87,6 +96,10 @@ describe('Stack', () => {
     expect(html).toContain('<h3 class="t-heading">Web and cloud</h3>')
   })
 
+  test('keeps technology names out of automatic page translation', () => {
+    expect(count(renderIn('en', <Stack />), 'translate="no"')).toBe(2)
+  })
+
   test('lists the technologies on each side', () => {
     const html = renderIn('pt', <Stack />)
     for (const name of ['SAP API Management', 'CAP', 'Next.js', 'NestJS', 'Terraform', 'Python']) {
@@ -103,6 +116,10 @@ describe('Clients', () => {
     expect(count(html, '<table')).toBe(1)
     expect(count(html, 'scope="row"')).toBe(8)
     expect(count(html, 'scope="col"')).toBe(2)
+  })
+
+  test('keeps client names out of automatic page translation', () => {
+    expect(count(renderIn('en', <Clients />), 'translate="no"')).toBe(8)
   })
 
   test('says what he did at each client, in the page language', () => {
@@ -154,6 +171,10 @@ describe('Contact', () => {
     expect(html).toMatch(/^<section id="contact"/)
     expect(html).toContain('href="mailto:alejunior.dev@gmail.com"')
     expect(html).toContain('>alejunior.dev@gmail.com</a>')
+  })
+
+  test('keeps the address out of automatic page translation', () => {
+    expect(renderIn('en', <Contact />)).toMatch(/href="mailto:[^"]+"[^>]*translate="no"/)
   })
 
   test('links the CV of the page language and the two profiles', () => {

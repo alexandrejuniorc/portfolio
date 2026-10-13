@@ -18,8 +18,9 @@ test('marks the language of the current page, and only that one', () => {
   expect(html).toMatch(/href="\/pt"[^>]*aria-current="true"/)
 })
 
-test('names each language in itself for screen readers', () => {
+test('names each language in full, and the accessible name still contains what is shown', () => {
   const html = renderIn('en', <LanguageSwitch />)
-  expect(html).toContain('aria-label="Português"')
-  expect(html).toContain('aria-label="Español"')
+  expect(html).toContain('>PT<span class="sr-only"> Português</span></a>')
+  expect(html).toContain('>ES<span class="sr-only"> Español</span></a>')
+  expect(html).not.toContain('aria-label="Português"')
 })

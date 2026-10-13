@@ -37,7 +37,11 @@ export function SiteHeader() {
   return (
     <header className="absolute inset-x-0 top-0 z-10">
       <div className="wrap flex items-center justify-between gap-4 py-4">
-        <a className="nav-link -ml-2.5 font-display font-bold" href={localePath(getLocale())}>
+        <a
+          className="nav-link -ml-2.5 font-display font-bold"
+          href={localePath(getLocale())}
+          translate="no"
+        >
           {SITE.name}
         </a>
 

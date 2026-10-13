@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import {
+  applyTheme,
   DEFAULT_THEME,
   nextTheme,
   readDocumentTheme,
@@ -46,7 +47,7 @@ export const useThemeStore = create<ThemeState>()(
     (set, get) => ({
       theme: DEFAULT_THEME,
       setTheme: (theme) => {
-        if (typeof document !== 'undefined') document.documentElement.dataset.theme = theme
+        applyTheme(theme)
         set({ theme })
       },
       toggle: () => get().setTheme(nextTheme(get().theme)),

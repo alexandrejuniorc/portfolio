@@ -20,6 +20,7 @@ export function Contact() {
         <a
           className="contact-email t-display mt-12"
           href={`mailto:${SITE.email}`}
+          translate="no"
           data-reveal
           style={order(2)}
         >

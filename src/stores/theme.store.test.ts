@@ -22,6 +22,18 @@ describe('theme store', () => {
     expect(parseStoredTheme(localStorage.getItem(THEME_STORAGE_KEY))).toBe('light')
   })
 
+  test('toggle repaints the browser chrome to match the page', () => {
+    const meta = document.createElement('meta')
+    meta.setAttribute('name', 'theme-color')
+    meta.setAttribute('content', '#07090d')
+    document.head.append(meta)
+    useThemeStore.getState().toggle()
+    expect(meta.getAttribute('content')).toBe('#f6f7f9')
+    useThemeStore.getState().toggle()
+    expect(meta.getAttribute('content')).toBe('#07090d')
+    meta.remove()
+  })
+
   test('toggling twice comes back to dark', () => {
     useThemeStore.getState().toggle()
     useThemeStore.getState().toggle()
