@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { LanguageSwitch } from '@/components/LanguageSwitch'
-import { ThemeToggle } from '@/components/ThemeToggle'
+import { RevealObserver } from '@/components/RevealObserver'
+import { SiteHeader } from '@/components/SiteHeader'
 import { buildHead } from '@/lib/seo'
 import { m } from '@/paraglide/messages'
 import { getLocale } from '@/paraglide/runtime'
@@ -12,13 +12,18 @@ export const Route = createFileRoute('/')({
 
 function HomePage() {
   return (
-    <main id="main">
-      <h1>
-        <span className="block">{m.hero_title_line1()}</span>
-        <span className="block">{m.hero_title_line2()}</span>
-      </h1>
-      <LanguageSwitch />
-      <ThemeToggle />
-    </main>
+    <>
+      <a className="skip-link" href="#main">
+        {m.skip_to_content()}
+      </a>
+      <SiteHeader />
+      <main id="main">
+        <h1 className="t-display wrap pt-40">
+          <span className="block">{m.hero_title_line1()}</span>
+          <span className="block">{m.hero_title_line2()}</span>
+        </h1>
+      </main>
+      <RevealObserver />
+    </>
   )
 }

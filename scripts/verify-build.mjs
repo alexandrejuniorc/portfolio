@@ -51,6 +51,9 @@ for (const page of pages) {
   }
   if (!head.includes('application/ld+json')) failures.push(`${page.file}: no JSON-LD`)
   if (/lab2dev|cidic|garbes/i.test(html)) failures.push(`${page.file}: names a consultancy`)
+  if (!html.includes('class="skip-link" href="#main"')) failures.push(`${page.file}: no skip link`)
+  if (!html.includes('<main id="main"')) failures.push(`${page.file}: no <main id="main">`)
+  if (!html.includes('<header')) failures.push(`${page.file}: no site header`)
   for (const ref of localRefs(html)) {
     if (!existsSync(join(root, ref))) failures.push(`${page.file}: points to missing file ${ref}`)
   }
