@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@fontsource-variable/red-hat-display':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/red-hat-text':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@tanstack/react-router':
         specifier: ^1.170.42
         version: 1.170.42(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -263,6 +269,12 @@ packages:
 
   '@emnapi/wasi-threads@1.2.2':
     resolution: {integrity: sha512-c95qOXkHdydNKhscBTebqEC1CVAZpyqOfVfBzQ1qgzyl3gfeldUjIggDbIZgDKsHLgnsM+igH7TJ/eAasaVuMA==}
+
+  '@fontsource-variable/red-hat-display@5.3.0':
+    resolution: {integrity: sha512-8u4FI+i3fkB8erlN9lMGa7Hm7aBCRP34y/aPwriBUiDYoxmS/N1QvBrd/hghUBnHJKrVKRg3h4Oubpyl2H8smw==}
+
+  '@fontsource-variable/red-hat-text@5.3.0':
+    resolution: {integrity: sha512-DvwcJ6vj6ZR4xGnrcBpzWEnl35TXXroCYHGoTIdWpkgeYKq/Hda7JhvNuJFplKoGpu4DsCO2ZnyJjiGxvn4Etg==}
 
   '@inlang/paraglide-js@2.27.0':
     resolution: {integrity: sha512-KAAwRbg/h3oi2D4nB0cUCKG2ntOLpcSOmwwjm+SL2a316NhdypXWGeElJenCwK2piPz7vQTn7yOYOwCjqIEP5g==}
@@ -1855,6 +1867,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
     optional: true
+
+  '@fontsource-variable/red-hat-display@5.3.0': {}
+
+  '@fontsource-variable/red-hat-text@5.3.0': {}
 
   '@inlang/paraglide-js@2.27.0(typescript@7.0.2)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0))':
     dependencies:
