@@ -192,7 +192,7 @@ describe('Contact', () => {
   })
 
   test('never shows a phone number', () => {
-    expect(renderIn('en', <Contact />)).not.toMatch(/\+55/)
+    expect(renderIn('en', <Contact />)).not.toMatch(/\+55|\(\d{2}\)\s*9|\d{4}-\d{4}/)
   })
 })
 

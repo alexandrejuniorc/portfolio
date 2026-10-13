@@ -77,7 +77,8 @@ for (const page of pages) {
   if (!html.includes('href="mailto:alejunior.dev@gmail.com"'))
     failures.push(`${page.file}: no email link`)
   if (!html.includes('<footer')) failures.push(`${page.file}: no footer`)
-  if (/\+55/.test(html)) failures.push(`${page.file}: shows a phone number`)
+  if (/\+55|\(\d{2}\)\s*9|\d{4}-\d{4}/.test(html))
+    failures.push(`${page.file}: shows a phone number`)
   if (!head.includes('rel="icon"')) failures.push(`${page.file}: no favicon link`)
   if ((head.match(/rel="preload" as="font"/g) ?? []).length !== 2) {
     failures.push(`${page.file}: expected two preloaded fonts`)

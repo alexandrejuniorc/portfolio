@@ -86,9 +86,24 @@ describe('build and motion safety', () => {
     expect(THEME_COLOR.light).toBe(themes.light.bg)
   })
 
+  test('a printed page uses the light palette, keeps the arrow fills and hides nothing', () => {
+    const print = css.slice(css.indexOf('@media print'))
+    expect(css).toContain('@media print')
+    expect(print).toContain('--bg: #ffffff')
+    expect(print).toContain('--ink: #0b1220')
+    expect(print).toContain('print-color-adjust: exact')
+    // Entrance motion, which hides content until it scrolls in, exists on screens only.
+    expect(css).not.toContain('@media (prefers-reduced-motion: no-preference)')
+  })
+
   test('every animation and transition sits behind prefers-reduced-motion', () => {
-    const motionBlock = css.slice(css.indexOf('@media (prefers-reduced-motion: no-preference)'))
-    const before = css.slice(0, css.indexOf('@media (prefers-reduced-motion: no-preference)'))
+    const motionBlock = css.slice(
+      css.indexOf('@media screen and (prefers-reduced-motion: no-preference)'),
+    )
+    const before = css.slice(
+      0,
+      css.indexOf('@media screen and (prefers-reduced-motion: no-preference)'),
+    )
     expect(motionBlock.length).toBeGreaterThan(0)
     expect(before).not.toMatch(/\b(animation|transition)\s*:/)
   })

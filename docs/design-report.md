@@ -109,6 +109,12 @@ performance for that reason alone.
   could not be taken with the tools at hand.
 - With reduced motion forced in headless Chrome, everything is visible and nothing moves.
 
+## On paper
+
+A printed page, or one saved as PDF, uses the light palette whatever the theme, prints the arrow
+fills as drawn and shows every section: entrance motion exists on screens only. Checked by
+printing the Portuguese page to PDF from headless Chrome.
+
 ## Content to confirm
 
 - Years for the clients other than RHI Magnesita (2024), Whirlpool (2025) and Braskem (2026).
