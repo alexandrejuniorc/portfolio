@@ -54,6 +54,20 @@ for (const page of pages) {
   if (!html.includes('class="skip-link" href="#main"')) failures.push(`${page.file}: no skip link`)
   if (!html.includes('<main id="main"')) failures.push(`${page.file}: no <main id="main">`)
   if (!html.includes('<header')) failures.push(`${page.file}: no site header`)
+  if ((html.match(/<article/g) ?? []).length !== 4)
+    failures.push(`${page.file}: expected 4 case articles`)
+  if (!html.includes('id="work"')) failures.push(`${page.file}: no #work section`)
+  const cv = page.lang === 'pt-BR' ? 'CV_Alexandre_Junior_BR.pdf' : 'CV_Alexandre_Junior_EN.pdf'
+  if (!html.includes(`href="/cv/${cv}"`)) failures.push(`${page.file}: does not offer ${cv}`)
+  const builtCv = join(root, 'cv', cv)
+  const sourceCv = join(process.cwd(), 'public', 'cv', cv)
+  if (
+    existsSync(builtCv) &&
+    existsSync(sourceCv) &&
+    !readFileSync(builtCv).equals(readFileSync(sourceCv))
+  ) {
+    failures.push(`${page.file}: ${cv} in the build is not byte-identical to public/cv/${cv}`)
+  }
   for (const ref of localRefs(html)) {
     if (!existsSync(join(root, ref))) failures.push(`${page.file}: points to missing file ${ref}`)
   }

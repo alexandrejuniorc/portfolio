@@ -4,6 +4,8 @@ import { SiteHeader } from '@/components/SiteHeader'
 import { buildHead } from '@/lib/seo'
 import { m } from '@/paraglide/messages'
 import { getLocale } from '@/paraglide/runtime'
+import { Hero } from '@/sections/hero/Hero'
+import { Work } from '@/sections/work/Work'
 
 export const Route = createFileRoute('/')({
   head: () => buildHead(getLocale()),
@@ -18,10 +20,8 @@ function HomePage() {
       </a>
       <SiteHeader />
       <main id="main">
-        <h1 className="t-display wrap pt-40">
-          <span className="block">{m.hero_title_line1()}</span>
-          <span className="block">{m.hero_title_line2()}</span>
-        </h1>
+        <Hero />
+        <Work />
       </main>
       <RevealObserver />
     </>
