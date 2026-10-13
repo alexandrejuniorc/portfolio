@@ -73,6 +73,11 @@ for (const page of pages) {
   }
   if ((html.match(/scope="row"/g) ?? []).length !== 8)
     failures.push(`${page.file}: expected 8 client rows`)
+  if (!html.includes('id="contact"')) failures.push(`${page.file}: no #contact section`)
+  if (!html.includes('href="mailto:alejunior.dev@gmail.com"'))
+    failures.push(`${page.file}: no email link`)
+  if (!html.includes('<footer')) failures.push(`${page.file}: no footer`)
+  if (/\+55/.test(html)) failures.push(`${page.file}: shows a phone number`)
   for (const ref of localRefs(html)) {
     if (!existsSync(join(root, ref))) failures.push(`${page.file}: points to missing file ${ref}`)
   }

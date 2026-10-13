@@ -6,6 +6,8 @@ import { m } from '@/paraglide/messages'
 import { getLocale } from '@/paraglide/runtime'
 import { About } from '@/sections/about/About'
 import { Clients } from '@/sections/clients/Clients'
+import { Contact } from '@/sections/contact/Contact'
+import { Footer } from '@/sections/footer/Footer'
 import { Hero } from '@/sections/hero/Hero'
 import { Proof } from '@/sections/proof/Proof'
 import { Stack } from '@/sections/stack/Stack'
@@ -30,7 +32,9 @@ function HomePage() {
         <Clients />
         <Proof />
         <About />
+        <Contact />
       </main>
+      <Footer />
       <RevealObserver />
     </>
   )

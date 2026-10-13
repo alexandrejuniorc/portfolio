@@ -3,6 +3,8 @@ import { proofs } from '@/content/proof'
 import { renderIn } from '@/test/render'
 import { About } from './about/About'
 import { Clients } from './clients/Clients'
+import { Contact } from './contact/Contact'
+import { Footer } from './footer/Footer'
 import { Hero } from './hero/Hero'
 import { Proof } from './proof/Proof'
 import { Stack } from './stack/Stack'
@@ -143,5 +145,44 @@ describe('About', () => {
 
   test('does not claim Spanish as a spoken language', () => {
     expect(renderIn('es', <About />)).not.toMatch(/Español, |Spanish/)
+  })
+})
+
+describe('Contact', () => {
+  test('puts the email address forward as a mailto link', () => {
+    const html = renderIn('en', <Contact />)
+    expect(html).toMatch(/^<section id="contact"/)
+    expect(html).toContain('href="mailto:alejunior.dev@gmail.com"')
+    expect(html).toContain('>alejunior.dev@gmail.com</a>')
+  })
+
+  test('links the CV of the page language and the two profiles', () => {
+    const html = renderIn('pt', <Contact />)
+    expect(html).toContain('href="/cv/CV_Alexandre_Junior_BR.pdf"')
+    expect(html).toContain('href="https://www.linkedin.com/in/alexandrejuniorc/"')
+    expect(html).toContain('href="https://github.com/alexandrejuniorc"')
+  })
+
+  test('before the script runs it only says where he works from', () => {
+    const html = renderIn('en', <Contact />)
+    expect(html).toContain('I work from São Paulo, UTC−3.')
+    expect(html).not.toContain('hours-row')
+    expect(html).not.toContain('working hours today')
+  })
+
+  test('never shows a phone number', () => {
+    expect(renderIn('en', <Contact />)).not.toMatch(/\+55/)
+  })
+})
+
+describe('Footer', () => {
+  test('closes with the name and repeats the language and theme switches', () => {
+    const html = renderIn('es', <Footer />)
+    expect(html).toMatch(/^<footer/)
+    expect(html).toContain('Alexandre Junior')
+    expect(html).toContain('aria-label="Idioma"')
+    expect(html).toContain('aria-label="Cambiar entre tema oscuro y claro"')
+    expect(html).toContain('href="#main"')
+    expect(html).toContain('Volver arriba')
   })
 })
