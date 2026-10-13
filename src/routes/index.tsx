@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { ThemeToggle } from '@/components/ThemeToggle'
 import { m } from '@/paraglide/messages'
 
 export const Route = createFileRoute('/')({
@@ -13,6 +14,7 @@ function HomePage() {
         <span className="block">{m.hero_title_line1()}</span>
         <span className="block">{m.hero_title_line2()}</span>
       </h1>
+      <ThemeToggle />
     </main>
   )
 }

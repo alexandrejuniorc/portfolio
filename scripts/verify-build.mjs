@@ -31,6 +31,10 @@ for (const page of pages) {
   if (!/<title>[^<]+<\/title>/.test(html)) failures.push(`${page.file}: empty <title>`)
   if ((html.match(/<h1[\s>]/g) ?? []).length !== 1)
     failures.push(`${page.file}: expected exactly one <h1>`)
+  const head = html.slice(0, html.indexOf('</head>'))
+  if (!head.includes("localStorage.getItem('portfolio-theme')")) {
+    failures.push(`${page.file}: the theme script is not in <head>`)
+  }
   for (const ref of localRefs(html)) {
     if (!existsSync(join(root, ref))) failures.push(`${page.file}: points to missing file ${ref}`)
   }
