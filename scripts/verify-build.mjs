@@ -68,6 +68,11 @@ for (const page of pages) {
   ) {
     failures.push(`${page.file}: ${cv} in the build is not byte-identical to public/cv/${cv}`)
   }
+  for (const id of ['stack', 'clients', 'proof', 'about']) {
+    if (!html.includes(`id="${id}"`)) failures.push(`${page.file}: no #${id} section`)
+  }
+  if ((html.match(/scope="row"/g) ?? []).length !== 8)
+    failures.push(`${page.file}: expected 8 client rows`)
   for (const ref of localRefs(html)) {
     if (!existsSync(join(root, ref))) failures.push(`${page.file}: points to missing file ${ref}`)
   }
