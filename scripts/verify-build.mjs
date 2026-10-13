@@ -35,8 +35,41 @@ for (const page of pages) {
   if (!head.includes("localStorage.getItem('portfolio-theme')")) {
     failures.push(`${page.file}: the theme script is not in <head>`)
   }
+  if (!/<meta name="description" content="[^"]{50,}"/.test(head)) {
+    failures.push(`${page.file}: missing or short meta description`)
+  }
+  if (
+    !new RegExp(`<link rel="canonical" href="[^"]*${page.path === '/' ? '/' : page.path}"`).test(
+      head,
+    )
+  ) {
+    failures.push(`${page.file}: canonical does not end with ${page.path}`)
+  }
+  for (const tag of ['en', 'pt-BR', 'es', 'x-default']) {
+    if (!head.includes(`hrefLang="${tag}"`))
+      failures.push(`${page.file}: no hreflang alternate for ${tag}`)
+  }
+  if (!head.includes('application/ld+json')) failures.push(`${page.file}: no JSON-LD`)
+  if (/lab2dev|cidic|garbes/i.test(html)) failures.push(`${page.file}: names a consultancy`)
   for (const ref of localRefs(html)) {
     if (!existsSync(join(root, ref))) failures.push(`${page.file}: points to missing file ${ref}`)
+  }
+}
+
+for (const file of ['404.html', 'robots.txt', 'sitemap.xml']) {
+  if (!existsSync(join(root, file))) failures.push(`${file}: missing from the build`)
+}
+if (existsSync(join(root, 'sitemap.xml'))) {
+  const sitemap = readFileSync(join(root, 'sitemap.xml'), 'utf8')
+  if ((sitemap.match(/<loc>/g) ?? []).length !== pages.length) {
+    failures.push(`sitemap.xml: expected ${pages.length} <loc> entries`)
+  }
+}
+if (existsSync(join(root, '404.html'))) {
+  const notFound = readFileSync(join(root, '404.html'), 'utf8')
+  for (const page of pages) {
+    if (!notFound.includes(`href="${page.path}"`))
+      failures.push(`404.html: no link to ${page.path}`)
   }
 }
 

@@ -4,9 +4,11 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { paraglideOptions } from './i18n.config.ts'
+import { resolveSiteUrl } from './src/config/site-url.ts'
 
 export default defineConfig({
   resolve: { tsconfigPaths: true },
+  define: { __SITE_URL__: JSON.stringify(resolveSiteUrl(process.env)) },
   plugins: [
     paraglideVitePlugin(paraglideOptions),
     tanstackStart({

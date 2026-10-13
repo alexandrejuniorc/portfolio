@@ -1,9 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { LanguageSwitch } from '@/components/LanguageSwitch'
 import { ThemeToggle } from '@/components/ThemeToggle'
+import { buildHead } from '@/lib/seo'
 import { m } from '@/paraglide/messages'
+import { getLocale } from '@/paraglide/runtime'
 
 export const Route = createFileRoute('/')({
-  head: () => ({ meta: [{ title: `${m.hero_title_line1()} ${m.hero_title_line2()}` }] }),
+  head: () => buildHead(getLocale()),
   component: HomePage,
 })
 
@@ -14,6 +17,7 @@ function HomePage() {
         <span className="block">{m.hero_title_line1()}</span>
         <span className="block">{m.hero_title_line2()}</span>
       </h1>
+      <LanguageSwitch />
       <ThemeToggle />
     </main>
   )
