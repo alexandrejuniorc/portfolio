@@ -78,12 +78,24 @@ for (const page of pages) {
     failures.push(`${page.file}: no email link`)
   if (!html.includes('<footer')) failures.push(`${page.file}: no footer`)
   if (/\+55/.test(html)) failures.push(`${page.file}: shows a phone number`)
+  if (!head.includes('rel="icon"')) failures.push(`${page.file}: no favicon link`)
+  if ((head.match(/rel="preload" as="font"/g) ?? []).length !== 2) {
+    failures.push(`${page.file}: expected two preloaded fonts`)
+  }
   for (const ref of localRefs(html)) {
     if (!existsSync(join(root, ref))) failures.push(`${page.file}: points to missing file ${ref}`)
   }
 }
 
-for (const file of ['404.html', 'robots.txt', 'sitemap.xml']) {
+for (const file of [
+  '404.html',
+  'robots.txt',
+  'sitemap.xml',
+  'favicon.svg',
+  'og/en.png',
+  'og/pt.png',
+  'og/es.png',
+]) {
   if (!existsSync(join(root, file))) failures.push(`${file}: missing from the build`)
 }
 if (existsSync(join(root, 'sitemap.xml'))) {

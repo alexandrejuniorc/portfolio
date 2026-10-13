@@ -1,3 +1,5 @@
+import displayFont from '@fontsource-variable/red-hat-display/files/red-hat-display-latin-wght-normal.woff2?url'
+import textFont from '@fontsource-variable/red-hat-text/files/red-hat-text-latin-wght-normal.woff2?url'
 import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import type { ReactNode } from 'react'
 import { LOCALE_TAG } from '@/lib/locale'
@@ -12,7 +14,18 @@ export const Route = createRootRoute({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'theme-color', content: '#07090d' },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [
+      {
+        rel: 'preload',
+        as: 'font',
+        type: 'font/woff2',
+        href: displayFont,
+        crossOrigin: 'anonymous',
+      },
+      { rel: 'preload', as: 'font', type: 'font/woff2', href: textFont, crossOrigin: 'anonymous' },
+      { rel: 'stylesheet', href: appCss },
+      { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+    ],
     scripts: [{ children: THEME_INIT_SCRIPT }],
   }),
   shellComponent: RootDocument,
